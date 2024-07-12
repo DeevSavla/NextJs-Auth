@@ -1,8 +1,6 @@
 import {connect} from '@/dbConfig/dbConfig'
 import User from '@/models/userModel'
 import {NextRequest,NextResponse} from 'next/server'
-import bcryptjs from 'bcryptjs'
-import { sendEmail } from '@/helpers/mailer'
 import { getDataFromToken } from '@/helpers/dataFromToken'
 
 connect()
@@ -18,9 +16,9 @@ export async function POST(request:NextRequest){
         }
 
         return NextResponse.json({
-            data:user,
             message:'User Data Found',
-            success:true
+            success:true,
+            data:user,
         })
 
     } catch(error:any){

@@ -1,7 +1,6 @@
 import {connect} from '@/dbConfig/dbConfig'
 import {NextRequest,NextResponse} from 'next/server'
 
-
 connect()
 
 export async function GET(request:NextRequest){
