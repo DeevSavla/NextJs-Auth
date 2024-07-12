@@ -2,13 +2,8 @@ import User from '@/models/userModel';
 import nodemailer from 'nodemailer'
 import bcryptjs from 'bcryptjs'
 
-interface Types {
-    email:string,
-    emailType:string,
-    userId:string,
-}
 
-export const sendEmail = async ({ email, emailType, userId }:Types) => {
+export const sendEmail = async ({ email, emailType, userId }:any) => {
     try {
 
         const hashedToken = await bcryptjs.hash(userId.toString(),10)
@@ -22,7 +17,7 @@ export const sendEmail = async ({ email, emailType, userId }:Types) => {
             await User.findByIdAndUpdate(userId,{forgotPasswordToken:hashedToken,forgotPasswordTokenExpiry:Date.now()+3600000})
         }
 
-        const transporter = nodemailer.createTransport({
+        var transporter = nodemailer.createTransport({
             host: process.env.EMAIL_HOST,
             port: 2525,
             auth: {
@@ -41,11 +36,12 @@ export const sendEmail = async ({ email, emailType, userId }:Types) => {
             </p>`
         }
 
+
         const mainResponse = await transporter.sendMail(mailOptions)
 
         return mainResponse
 
     } catch (error:any) {
-        throw new Error(error.message)
+        throw new Error("Could not send email",error.message)
     }
 }
