@@ -35,7 +35,7 @@ export const sendEmail = async ({ email, emailType, userId }:Types) => {
             from: 'savla.deev@gmail.com',
             to: email, 
             subject: emailType === 'VERIFY' ? "Verify your email" : "Change your password", 
-            html: "<b>Hello world?</b>",
+            html: "<p>Hello world?</p>",
         }
 
         const mainResponse = await transporter.sendMail(mailOptions)
