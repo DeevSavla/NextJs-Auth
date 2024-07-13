@@ -14,7 +14,7 @@ function LoginPage() {
     password: '',
   })
 
-  const [buttonDisable, setButtonDisable] = useState(false)
+  const [buttonDisable, setButtonDisable] = useState(true)
 
   const [loading, setLoading] = useState(false)
 
