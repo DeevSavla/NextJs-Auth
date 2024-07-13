@@ -75,7 +75,8 @@ function SignupPage() {
       />
       <button
         onClick={onSignup}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisable ? "No signup" : "Signup"}</button>
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisable ? "No signup" : "Signup"}
+      </button>
       <Link href="/login">Visit login page</Link>
     </div>
   )
