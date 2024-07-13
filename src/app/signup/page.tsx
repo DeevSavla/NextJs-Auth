@@ -27,7 +27,7 @@ function SignupPage() {
       toast.success('Signup Success')
       router.push('/login')
     } catch (error: any) {
-      console.log('Signup Failed.')
+      console.log('Signup Failed:',error.response.data.error)
       toast.error(error.response?.data?.message || error.message)
     } finally {
       setLoading(false)
